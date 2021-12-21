@@ -107,7 +107,7 @@ if (!opt$vst) {
 }
 
 assay(dds, vst_name) <- assay(rld)
-save(dds,file=DDSFile)
+
 saveRDS(dds, file=sub("\\.dds\\.RData$", ".rds", DDSFile))
 
 ################################################
@@ -228,6 +228,8 @@ for (name in names(sizeFactors(dds))) {
     write(as.numeric(sizeFactors(dds)[name]), file=sizeFactorFile)
 }
 
+
+
 ################################################
 ################################################
 ## R SESSION INFO                             ##
@@ -235,7 +237,7 @@ for (name in names(sizeFactors(dds))) {
 ################################################
 
 RLogFile <- "R_sessionInfo.log"
-
+save(list=ls(),file=DDSFile)
 sink(RLogFile)
 a <- sessionInfo()
 print(a)
